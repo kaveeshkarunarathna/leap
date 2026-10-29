@@ -3,7 +3,10 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X, LayoutDashboard, LogOut, ShieldCheck, Plus } from 'lucide-react';
 import Logo from './Logo.jsx';
+import { PartnerLogo, partner } from './Partners.jsx';
 import { useAuth } from '../auth.jsx';
+
+const club = partner('club');
 
 const LINKS = [
   { to: '/', label: 'Home', end: true },
@@ -59,7 +62,13 @@ export default function Navbar() {
   return (
     <header className={`nav ${scrolled ? 'nav-scrolled' : ''}`}>
       <div className="container nav-inner">
-        <Link to="/" className="nav-brand" aria-label="LEAP home"><Logo /></Link>
+        <div className="nav-brands">
+          <Link to="/" className="nav-brand" aria-label="LEAP home"><Logo /></Link>
+          <span className="nav-divider" aria-hidden="true" />
+          <Link to="/about" className="nav-crest" aria-label={`${club.name}, the club behind LEAP`} title={club.name}>
+            <PartnerLogo partner={club} plate={false} />
+          </Link>
+        </div>
         <nav className="nav-links">{links}</nav>
         <div className="nav-actions">{actions}</div>
         <button className="btn btn-icon nav-toggle" aria-label="Menu" onClick={() => setOpen((o) => !o)}>

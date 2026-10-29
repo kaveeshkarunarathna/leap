@@ -9,6 +9,9 @@ export default function Background() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Colours come from the theme tokens in styles.css, so the canvas follows any palette change.
+    const css = getComputedStyle(document.documentElement);
+    const [lineRgb, dotRgb, goldRgb] = ['--blue-rgb', '--cyan-rgb', '--gold-rgb'].map((v) => css.getPropertyValue(v).trim());
     let w, h, dpr, points, raf;
     const mouse = { x: -9999, y: -9999 };
 
@@ -23,6 +26,7 @@ export default function Background() {
         x: Math.random() * w, y: Math.random() * h,
         vx: (Math.random() - 0.5) * 0.25 * dpr, vy: (Math.random() - 0.5) * 0.25 * dpr,
         r: (Math.random() * 1.4 + 0.6) * dpr,
+        fill: `rgb(${Math.random() < 0.1 ? goldRgb : dotRgb} / 0.75)`,
       }));
     }
 
@@ -42,14 +46,14 @@ export default function Background() {
           const a = points[i], b = points[j];
           const d = Math.hypot(a.x - b.x, a.y - b.y);
           if (d < link) {
-            ctx.strokeStyle = `rgba(91,140,255,${(1 - d / link) * 0.28})`;
+            ctx.strokeStyle = `rgb(${lineRgb} / ${(1 - d / link) * 0.28})`;
             ctx.lineWidth = dpr * 0.7;
             ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
           }
         }
       }
       for (const p of points) {
-        ctx.fillStyle = 'rgba(0,229,255,0.75)';
+        ctx.fillStyle = p.fill;
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
       }
       if (!reduce) raf = requestAnimationFrame(frame);

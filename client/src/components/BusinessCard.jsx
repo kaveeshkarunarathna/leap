@@ -18,7 +18,7 @@ export default function BusinessCard({ b }) {
       <Link to={`/b/${b.slug}`} className="biz-card-link">
         <div className="biz-cover" style={b.cover_url ? { backgroundImage: `url(${b.cover_url})` } : undefined}>
           {!b.cover_url && <div className="biz-cover-fx"><CategoryIcon name={b.category_icon} size={44} /></div>}
-          {!!b.featured && <span className="chip chip-glow biz-featured"><Star size={12} /> Featured</span>}
+          {!!b.featured && <span className="chip chip-gold biz-featured"><Star size={12} /> Featured</span>}
         </div>
         <div className="biz-body">
           <div className="biz-head">

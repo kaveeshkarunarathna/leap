@@ -37,7 +37,7 @@ function Listings({ status, onChange }) {
           <motion.div key={b.id} layout className="card admin-item" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, x: 60 }}>
             <Avatar src={b.logo_url} name={b.name} size={52} />
             <div className="admin-item-body">
-              <div className="dash-item-title"><h3>{b.name}</h3>{!!b.featured && <span className="chip chip-glow"><Star size={12} /> Featured</span>}</div>
+              <div className="dash-item-title"><h3>{b.name}</h3>{!!b.featured && <span className="chip chip-gold"><Star size={12} /> Featured</span>}</div>
               {b.tagline && <span className="muted">{b.tagline}</span>}
               <span className="mono admin-meta">{b.category || 'No category'} · {[b.city, b.district].filter(Boolean).join(', ') || 'No location'}</span>
               <span className="mono admin-meta">By {b.owner_name} ({b.owner_email}) · {b.owner_club}{b.owner_leo_id ? ` · ID ${b.owner_leo_id}` : ''}</span>

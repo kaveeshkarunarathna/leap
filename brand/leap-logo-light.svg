@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 120" fill="none">
   <defs>
     <linearGradient id="lg" x1="10" y1="110" x2="110" y2="10" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#00E5FF"/><stop offset="0.55" stop-color="#5B8CFF"/><stop offset="1" stop-color="#B14DFF"/>
+      <stop offset="0" stop-color="#1FC3E0"/><stop offset="0.55" stop-color="#309CD8"/><stop offset="1" stop-color="#3D7FD6"/>
     </linearGradient>
     <linearGradient id="tg" x1="130" y1="0" x2="370" y2="0" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#0B1630"/><stop offset="1" stop-color="#2A3F78"/>
+      <stop offset="0" stop-color="#0B1620"/><stop offset="1" stop-color="#304854"/>
     </linearGradient>
     <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
       <feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
@@ -16,14 +16,14 @@
     <path d="M40 32 V84 H56 C70 84 79 62 85 42" stroke-width="9"/>
     <path d="M72.5 50 L86 38 L91 55" stroke-width="6.5"/>
   </g>
-  <circle cx="60" cy="27" r="2.4" fill="#00E5FF" opacity="0.9"/>
-  <circle cx="72" cy="24" r="1.6" fill="#B14DFF" opacity="0.8"/>
+  <circle cx="60" cy="27" r="2.4" fill="#FCCC00" opacity="0.9"/>
+  <circle cx="72" cy="24" r="1.6" fill="#1FC3E0" opacity="0.8"/>
   <g stroke="url(#tg)" stroke-width="9" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="2">
     <path d="M144.5 30 V85.5 H180"/>
     <path d="M232 34.5 H198 V85.5 H232 M198 59 H224"/>
     <path d="M248 90 L272 32 L296 90"/>
     <path d="M318.5 90 V34.5 H344 Q360 34.5 360 48 Q360 61.5 344 61.5 H318.5"/>
   </g>
-  <rect x="266" y="74" width="12" height="5" fill="#00E5FF"/>
-  <text x="140" y="110" font-family="Arial, Helvetica, sans-serif" font-size="9.4" textLength="220" lengthAdjust="spacingAndGlyphs" fill="#4A5D80">LEO ENTREPRENEURS ADVANCEMENT PLATFORM</text>
+  <rect x="266" y="74" width="12" height="5" fill="#FCCC00"/>
+  <text x="140" y="110" font-family="Arial, Helvetica, sans-serif" font-size="9.4" textLength="220" lengthAdjust="spacingAndGlyphs" fill="#5A6B80">LEO ENTREPRENEURS ADVANCEMENT PLATFORM</text>
 </svg>

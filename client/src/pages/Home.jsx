@@ -7,6 +7,7 @@ import { PageTransition, Reveal, ScrambleText, CountUp } from '../components/Mot
 import { LeapMark } from '../components/Logo.jsx';
 import BusinessCard, { CardSkeleton } from '../components/BusinessCard.jsx';
 import CategoryIcon from '../components/Icon.jsx';
+import PartnerStrip from '../components/Partners.jsx';
 
 const STEPS = [
   { icon: UserPlus, title: 'Join as a Leo', text: 'Create your account with your Leo club details in under a minute.' },
@@ -84,6 +85,16 @@ export default function Home() {
             <span className="stat-label mono">{label}</span>
           </Reveal>
         ))}
+      </section>
+
+      <section className="container section family">
+        <Reveal className="section-head">
+          <span className="eyebrow mono">// Part of the Leo &amp; Lions family</span>
+          <p className="muted family-lead">
+            LEAP is an initiative of the Leo Club of Biyagama Alliance, Leo District 306 D4.
+          </p>
+        </Reveal>
+        <Reveal delay={0.1}><PartnerStrip /></Reveal>
       </section>
 
       <section className="container section">

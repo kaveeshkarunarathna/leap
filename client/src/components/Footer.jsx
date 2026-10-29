@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import Logo from './Logo.jsx';
+import PartnerStrip from './Partners.jsx';
 
 export default function Footer() {
   return (
@@ -16,6 +17,10 @@ export default function Footer() {
           <Link to="/register">List your business</Link>
           <Link to="/about">About LEAP</Link>
         </div>
+      </div>
+      <div className="container footer-partners">
+        <span className="footer-partners-label mono">// Part of the Leo &amp; Lions family</span>
+        <PartnerStrip variant="footer" />
       </div>
       <div className="container footer-bottom mono">
         <span>© {new Date().getFullYear()} LEAP · Leo Club of Biyagama Alliance</span>
