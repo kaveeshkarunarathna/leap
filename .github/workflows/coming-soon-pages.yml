@@ -28,7 +28,7 @@ jobs:
       - name: Prepare site
         run: |
           mkdir -p _site
-          cp -r coming-soon/index.html coming-soon/assets _site/
+          cp -r coming-soon/index.html coming-soon/assets coming-soon/CNAME _site/
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
