@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LEAP | Coming Soon</title>
+<meta name="description" content="LEAP (Leo Entrepreneurs Advancement Platform) is a home for Leo entrepreneurs to showcase their businesses, products and services. Registrations starting soon. An initiative by the Leo Club of Biyagama Alliance.">
+<meta name="theme-color" content="#03060E">
+
+<!-- Link previews (Facebook, WhatsApp, LinkedIn, X) -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="LEAP | Coming Soon">
+<meta property="og:description" content="A platform for Leo entrepreneurs to showcase their businesses, products and services. Registrations starting soon.">
+<meta property="og:image" content="assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="assets/og-image.png">
+
+<link rel="icon" type="image/svg+xml" href="assets/leap-mark.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="grid-floor" aria-hidden="true"></div>
+<div class="scanlines" aria-hidden="true"></div>
+
+<!-- HUD frame -->
+<div class="hud" aria-hidden="true">
+  <span class="corner tl"></span><span class="corner tr"></span>
+  <span class="corner bl"></span><span class="corner br"></span>
+  <div class="hud-top">
+    <span class="mono">SYS://LEAP <span class="dim" id="clock">T-0000</span></span>
+    <span class="mono status"><i></i>BUILDING</span>
+  </div>
+</div>
+
+<main>
+  <!-- Hero -->
+  <section class="hero">
+    <svg class="mark" viewBox="0 0 120 120" fill="none" role="img" aria-label="LEAP logo">
+      <defs>
+        <linearGradient id="lg" x1="10" y1="110" x2="110" y2="10" gradientUnits="userSpaceOnUse">
+          <stop offset="0" stop-color="#00E5FF"/><stop offset=".55" stop-color="#5B8CFF"/><stop offset="1" stop-color="#B14DFF"/>
+        </linearGradient>
+        <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur stdDeviation="2.2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <path class="draw hex" pathLength="1" d="M60 6 L106.8 33 L106.8 87 L60 114 L13.2 87 L13.2 33 Z" stroke="url(#lg)" stroke-width="4" stroke-linejoin="round" opacity=".9"/>
+      <path class="draw hex-in" pathLength="1" d="M60 16 L98 38 L98 82 L60 104 L22 82 L22 38 Z" stroke="url(#lg)" stroke-width="1" opacity=".35"/>
+      <g filter="url(#glow)" stroke="url(#lg)" stroke-linecap="round" stroke-linejoin="round">
+        <path class="draw l" pathLength="1" d="M40 32 V84 H56 C70 84 79 62 85 42" stroke-width="9"/>
+        <path class="draw arrow" pathLength="1" d="M72.5 50 L86 38 L91 55" stroke-width="6.5"/>
+      </g>
+      <circle class="dot d1" cx="60" cy="27" r="2.4" fill="#00E5FF"/>
+      <circle class="dot d2" cx="72" cy="24" r="1.6" fill="#B14DFF"/>
+    </svg>
+
+    <h1 class="wordmark" data-text="LEAP">LEAP</h1>
+    <p class="tagline mono" data-scramble>Leo Entrepreneurs Advancement Platform</p>
+
+    <div class="soon">
+      <span class="line"></span>
+      <span class="mono soon-text">COMING SOON</span>
+      <span class="line"></span>
+    </div>
+    <a class="cue" href="#about">Registrations starting soon<span class="chev" aria-hidden="true"></span></a>
+  </section>
+
+  <!-- Intro -->
+  <section class="intro reveal" id="about">
+    <p class="kicker mono">// WHAT IS LEAP</p>
+    <h2>A digital home for <span class="grad">Leo entrepreneurs</span>.</h2>
+    <p class="lead">
+      LEAP is a platform where Leo members who run businesses can showcase what they do:
+      their businesses, products and services, all in one place. Anyone can browse and
+      discover Leo-owned ventures, and support the young entrepreneurs in our community.
+    </p>
+
+    <div class="cards">
+      <article class="card reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16v12H4z M8 7V5h8v2 M4 12h16"/></svg>
+        </div>
+        <h3>Showcase</h3>
+        <p>Leos list their businesses, products and services with photos, details and contact info.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>
+        </div>
+        <h3>Discover</h3>
+        <p>The public can browse and filter by category and location to find Leo-owned businesses.</p>
+      </article>
+      <article class="card reveal">
+        <div class="icon">
+          <svg viewBox="0 0 24 24"><path d="M4 18l6-6 4 4 6-8 M15 8h5v5"/></svg>
+        </div>
+        <h3>Grow</h3>
+        <p>More visibility, new customers and a network of fellow Leo entrepreneurs behind you.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Registrations -->
+  <section class="register reveal">
+    <div class="panel">
+      <span class="pc tl"></span><span class="pc tr"></span><span class="pc bl"></span><span class="pc br"></span>
+      <p class="mono badge"><i></i>STATUS: PREPARING LAUNCH</p>
+      <h2>Registrations <span class="grad">starting soon</span></h2>
+      <p>
+        Are you a Leo with a business, product or service? Get ready to put it on the map.
+        Registrations will open shortly. Keep an eye on our club's page for the announcement.
+      </p>
+      <div class="loader" aria-hidden="true"><span></span></div>
+    </div>
+  </section>
+</main>
+
+<footer class="reveal">
+  <p class="mono by">AN INITIATIVE BY</p>
+  <p class="club">Leo Club of Biyagama Alliance</p>
+  <span class="underline"></span>
+  <p class="copy mono">&copy; <span id="yr">2026</span> LEAP</p>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>
