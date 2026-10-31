@@ -12,10 +12,8 @@ This is a plain HTML/CSS/JS page. No Node.js or database is needed.
 5. Delete the zip. If an old `index.php` or `default.html` is there, rename or remove it so `index.html` loads.
 6. Open the domain in a browser to check it.
 
-## Make link previews show the image (Facebook / WhatsApp)
-Social apps need the full URL of the preview image. Edit `index.html` (right-click > Edit) and replace both `assets/og-image.png` with the full address, for example:
-`https://leap.yourdomain.lk/assets/og-image.png`
-Then paste your link into https://developers.facebook.com/tools/debug/ and click **Scrape Again** to refresh the Facebook preview.
+## Link previews
+`index.html` already points previews at `https://leap.leosofbiyagamaalliance.site`. If you host it at a different address, update the `og:image`, `og:url` and `canonical` lines in `index.html`. After going live, paste the link into https://developers.facebook.com/tools/debug/ and click **Scrape Again**.
 
 ## Later, when the full LEAP site launches
 The full app (see `DEPLOY-CPANEL.md`) replaces this page. Remove `index.html` and `assets/` from the folder before deploying it.
