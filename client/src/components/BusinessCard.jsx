@@ -2,11 +2,12 @@ import { Link } from 'react-router-dom';
 import { MapPin, Star, ArrowUpRight } from 'lucide-react';
 import { TiltCard } from './Motion.jsx';
 import CategoryIcon from './Icon.jsx';
+import { media } from '../api.js';
 
 export function Avatar({ src, name, size = 56 }) {
   const initials = (name || '?').split(/\s+/).map((w) => w[0]).slice(0, 2).join('').toUpperCase();
   return src ? (
-    <img className="avatar" src={src} alt="" style={{ width: size, height: size }} />
+    <img className="avatar" src={media(src)} alt="" style={{ width: size, height: size }} />
   ) : (
     <span className="avatar avatar-initials" style={{ width: size, height: size, fontSize: size * 0.34 }}>{initials}</span>
   );
@@ -16,7 +17,7 @@ export default function BusinessCard({ b }) {
   return (
     <TiltCard className="card biz-card">
       <Link to={`/b/${b.slug}`} className="biz-card-link">
-        <div className="biz-cover" style={b.cover_url ? { backgroundImage: `url(${b.cover_url})` } : undefined}>
+        <div className="biz-cover" style={b.cover_url ? { backgroundImage: `url(${media(b.cover_url)})` } : undefined}>
           {!b.cover_url && <div className="biz-cover-fx"><CategoryIcon name={b.category_icon} size={44} /></div>}
           {!!b.featured && <span className="chip chip-gold biz-featured"><Star size={12} /> Featured</span>}
         </div>

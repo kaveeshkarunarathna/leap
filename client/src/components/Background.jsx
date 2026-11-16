@@ -1,11 +1,15 @@
 import { useEffect, useRef } from 'react';
+import { useCalm } from '../theme.jsx';
 
 // Full-page animated backdrop: drifting particle network that reacts to the pointer,
 // layered over a CSS grid and glowing orbs (see .bg-* in styles.css).
 export default function Background() {
   const canvasRef = useRef(null);
+  const calm = useCalm();
 
   useEffect(() => {
+    // The light theme is meant to be calm: no moving particle network.
+    if (calm) return undefined;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -71,7 +75,7 @@ export default function Background() {
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerleave', onLeave);
     };
-  }, []);
+  }, [calm]);
 
   return (
     <div className="bg" aria-hidden="true">
@@ -79,7 +83,7 @@ export default function Background() {
       <div className="bg-orb bg-orb-1" />
       <div className="bg-orb bg-orb-2" />
       <div className="bg-orb bg-orb-3" />
-      <canvas ref={canvasRef} className="bg-canvas" />
+      {!calm && <canvas ref={canvasRef} className="bg-canvas" />}
       <div className="bg-noise" />
     </div>
   );

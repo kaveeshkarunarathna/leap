@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MapPin, Phone, Mail, Globe, MessageCircle, Facebook, Instagram, Eye, ArrowLeft, Package, Wrench, AlertTriangle } from 'lucide-react';
-import { api } from '../api.js';
+import { api, media } from '../api.js';
 import { PageTransition, Reveal } from '../components/Motion.jsx';
 import { Avatar } from '../components/BusinessCard.jsx';
 import BusinessCard from '../components/BusinessCard.jsx';
@@ -51,7 +51,7 @@ export default function BusinessPage() {
       )}
       <section className="container">
         <Link to="/explore" className="back-link mono"><ArrowLeft size={14} /> Back to directory</Link>
-        <motion.div className="profile-cover" style={b.cover_url ? { backgroundImage: `url(${b.cover_url})` } : undefined}
+        <motion.div className="profile-cover" style={b.cover_url ? { backgroundImage: `url(${media(b.cover_url)})` } : undefined}
           initial={{ opacity: 0, scale: 1.03 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }}>
           {!b.cover_url && <div className="profile-cover-fx"><CategoryIcon name={b.category_icon} size={90} /></div>}
           <div className="scanline" />
@@ -98,7 +98,7 @@ export default function BusinessPage() {
               <AnimatePresence mode="popLayout">
                 {shown.map((o) => (
                   <motion.div key={o.id} layout className="offer" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                    {o.image_url ? <img src={o.image_url} alt="" className="offer-img" /> : (
+                    {o.image_url ? <img src={media(o.image_url)} alt="" className="offer-img" /> : (
                       <div className="offer-img offer-img-empty">{o.type === 'product' ? <Package size={26} /> : <Wrench size={26} />}</div>
                     )}
                     <div className="offer-body">

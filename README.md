@@ -11,7 +11,7 @@ An initiative of the **Leo Club of Biyagama Alliance**.
 | `server/` | Node.js + Express API with MySQL (`mysql2`), JWT auth, image uploads |
 | `brand/` | LEAP logo files (SVG + PNG, dark and light); `brand/partners/` holds the full-size club, Leo MD 306, Leo and Lions logos (trimmed web copies are in `client/public/brand/`) |
 
-The Node server also serves the built React app, so on cPanel you run **one Node app** that hosts both the website and the API.
+The Node server can also serve the built React app (one Node app for both). On cPanel we host them separately: the website as static files and the API as its own Node app on an `api.` subdomain (see DEPLOY-CPANEL.md).
 
 ## Features
 

@@ -5,6 +5,7 @@ import { Menu, X, LayoutDashboard, LogOut, ShieldCheck, Plus } from 'lucide-reac
 import Logo from './Logo.jsx';
 import { PartnerLogo, partner } from './Partners.jsx';
 import { useAuth } from '../auth.jsx';
+import { ThemeToggle } from '../theme.jsx';
 
 const club = partner('club');
 
@@ -71,6 +72,7 @@ export default function Navbar() {
         </div>
         <nav className="nav-links">{links}</nav>
         <div className="nav-actions">{actions}</div>
+        <ThemeToggle />
         <button className="btn btn-icon nav-toggle" aria-label="Menu" onClick={() => setOpen((o) => !o)}>
           {open ? <X size={20} /> : <Menu size={20} />}
         </button>

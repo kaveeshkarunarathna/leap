@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowLeft, Plus, Trash2, Pencil, Save, Package, Wrench, ExternalLink, Loader2 } from 'lucide-react';
-import { api } from '../api.js';
+import { api, media } from '../api.js';
 import { PageTransition } from '../components/Motion.jsx';
 import { Field, ImageUpload, Spinner, StatusBadge } from '../components/Form.jsx';
 import { useToast } from '../components/Toast.jsx';
@@ -84,7 +84,7 @@ function Offerings({ businessId, initial }) {
                 <OfferingForm key="edit" initial={o} onSave={update} onCancel={() => setEditing(null)} />
               ) : (
                 <motion.div key="row" className="offer-row" layout initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  {o.image_url ? <img src={o.image_url} alt="" className="offer-thumb" /> : <span className="offer-thumb offer-img-empty">{o.type === 'product' ? <Package size={18} /> : <Wrench size={18} />}</span>}
+                  {o.image_url ? <img src={media(o.image_url)} alt="" className="offer-thumb" /> : <span className="offer-thumb offer-img-empty">{o.type === 'product' ? <Package size={18} /> : <Wrench size={18} />}</span>}
                   <div className="offer-row-body">
                     <strong>{o.title}</strong>
                     <span className="muted mono">{o.type}{o.price ? ` · ${o.price}` : ''}</span>

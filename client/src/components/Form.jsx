@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { ImagePlus, Loader2, X } from 'lucide-react';
-import { uploadImage } from '../api.js';
+import { media, uploadImage } from '../api.js';
 import { useToast } from './Toast.jsx';
 
 export function Field({ label, hint, children, className = '' }) {
@@ -25,7 +25,7 @@ export function ImageUpload({ value, onChange, label = 'Upload image', shape = '
     try { onChange(await uploadImage(file)); } catch (err) { toast(err.message, 'error'); } finally { setBusy(false); }
   };
   return (
-    <div className={`upload upload-${shape}`} style={value ? { backgroundImage: `url(${value})` } : undefined}>
+    <div className={`upload upload-${shape}`} style={value ? { backgroundImage: `url(${media(value)})` } : undefined}>
       <input ref={input} type="file" accept="image/png,image/jpeg,image/webp,image/gif" hidden onChange={onFile} />
       {!value && (
         <button type="button" className="upload-btn" onClick={() => input.current.click()} disabled={busy}>

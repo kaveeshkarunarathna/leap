@@ -33,6 +33,9 @@ const publicDir = path.join(__dirname, 'public');
 if (fs.existsSync(publicDir)) {
   app.use(express.static(publicDir, { index: false, maxAge: '7d' }));
   app.get('*', (req, res) => res.sendFile(path.join(publicDir, 'index.html')));
+} else {
+  // API-only install (website hosted separately): a simple check page at the API's root.
+  app.get('/', (req, res) => res.json({ ok: true, name: 'LEAP API' }));
 }
 
 // eslint-disable-next-line no-unused-vars
