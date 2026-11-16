@@ -1,5 +1,14 @@
 const TOKEN_KEY = 'leap_token';
 
+// Where the API lives. Empty (the default) means the same site that serves this page.
+// For a separate API subdomain, build with VITE_API_URL=https://api.example.com (see .env.example).
+export const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/+$/, '');
+
+// Uploaded images are stored as "/uploads/<file>" on the API server. Point them at the API host.
+export function media(url) {
+  return url && url.startsWith('/uploads/') ? `${API_BASE}${url}` : url;
+}
+
 export function getToken() {
   try { return localStorage.getItem(TOKEN_KEY); } catch { return null; }
 }
@@ -12,7 +21,7 @@ export async function api(path, { method = 'GET', body, form } = {}) {
   const token = getToken();
   if (token) headers.Authorization = `Bearer ${token}`;
   if (body !== undefined) headers['Content-Type'] = 'application/json';
-  const res = await fetch(`/api${path}`, {
+  const res = await fetch(`${API_BASE}/api${path}`, {
     method,
     headers,
     body: form || (body !== undefined ? JSON.stringify(body) : undefined),
