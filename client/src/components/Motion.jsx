@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useCalm } from '../theme.jsx';
 
 export function Reveal({ children, delay = 0, y = 24, className, as = 'div' }) {
   const M = motion[as];
@@ -24,9 +25,10 @@ export function PageTransition({ children }) {
 const GLYPHS = '!<>-_\\/[]{}=+*^?#01ABCDEFXYZ';
 // Text that "decodes" from random glyphs into the final string.
 export function ScrambleText({ text, className, duration = 1100 }) {
+  const calm = useCalm();
   const [out, setOut] = useState(text);
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setOut(text); return; }
+    if (calm || window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setOut(text); return; }
     let raf;
     const start = performance.now();
     const tick = (now) => {
@@ -37,7 +39,7 @@ export function ScrambleText({ text, className, duration = 1100 }) {
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [text, duration]);
+  }, [text, duration, calm]);
   return <span className={className} aria-label={text}><span aria-hidden="true">{out}</span></span>;
 }
 
@@ -62,12 +64,15 @@ export function CountUp({ value, duration = 1400 }) {
 }
 
 // Card that tilts toward the pointer in 3D and tracks a glow highlight.
+// In the calm (light) theme it stays flat and only the CSS hover lift applies.
 export function TiltCard({ children, className = '', ...rest }) {
+  const calm = useCalm();
   const x = useMotionValue(0.5);
   const y = useMotionValue(0.5);
   const rx = useSpring(useTransform(y, [0, 1], [7, -7]), { stiffness: 200, damping: 18 });
   const ry = useSpring(useTransform(x, [0, 1], [-7, 7]), { stiffness: 200, damping: 18 });
   const onMove = (e) => {
+    if (calm) return;
     const r = e.currentTarget.getBoundingClientRect();
     const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
     x.set(px); y.set(py);
@@ -75,6 +80,7 @@ export function TiltCard({ children, className = '', ...rest }) {
     e.currentTarget.style.setProperty('--my', `${py * 100}%`);
   };
   const onLeave = () => { x.set(0.5); y.set(0.5); };
+  if (calm) return <div className={className} {...rest}>{children}</div>;
   return (
     <motion.div className={`tilt ${className}`} style={{ rotateX: rx, rotateY: ry, transformPerspective: 900 }}
       onPointerMove={onMove} onPointerLeave={onLeave} {...rest}>
